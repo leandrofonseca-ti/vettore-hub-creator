@@ -504,10 +504,12 @@ function CtaSection() {
 function Footer() {
   return (
     <footer className="border-t border-white/5 px-6 py-10 text-center">
-      <div className="font-display text-xl font-bold text-white">
-        VETTORE <span className="text-gold">HUB</span>
-      </div>
-      <p className="mt-2 text-xs uppercase tracking-widest text-[#c8c8c8]">
+      <img
+        src={vettoreLogo}
+        alt="Vettore Hub"
+        className="mx-auto h-20 w-20 rounded-full object-cover"
+      />
+      <p className="mt-4 text-xs uppercase tracking-widest text-[#c8c8c8]">
         Conectando Pessoas · Estruturando Resultados
       </p>
       <p className="mt-6 text-xs text-[#c8c8c8]/60">
