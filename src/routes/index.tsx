@@ -461,7 +461,7 @@ function CtaSection() {
         <Reveal delay={200}>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="https://wa.me/5500000000000"
+              href="https://wa.me/5551993998093"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-3 rounded-full bg-[var(--whatsapp)] px-8 py-4 font-semibold text-white shadow-elegant transition-transform hover:scale-105"
@@ -472,7 +472,7 @@ function CtaSection() {
               Falar no WhatsApp
             </a>
             <a
-              href="mailto:contato@vettorehub.com.br"
+              href="mailto:cristiane@vettorehub.com.br"
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 font-semibold text-navy-deep shadow-gold transition-transform hover:scale-105"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
