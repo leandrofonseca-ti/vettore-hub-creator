@@ -35,6 +35,11 @@ function HeroSection() {
       <div className="absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-gold opacity-[0.04] blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-5xl animate-fade-in-up">
+        <img
+          src={vettoreLogo}
+          alt="Vettore Hub"
+          className="mx-auto mb-8 h-32 w-32 rounded-full object-cover shadow-gold md:h-40 md:w-40"
+        />
         <span className="mb-8 inline-block rounded-full border border-gold/40 bg-gold/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.3em] text-gold">
           Guia Estratégico para Centros Auditivos
         </span>
