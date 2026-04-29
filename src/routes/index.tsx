@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, Counter } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import vettoreLogo from "@/assets/vettore-logo.jpeg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -34,6 +35,11 @@ function HeroSection() {
       <div className="absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-gold opacity-[0.04] blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-5xl animate-fade-in-up">
+        <img
+          src={vettoreLogo}
+          alt="Vettore Hub"
+          className="mx-auto mb-8 h-32 w-32 rounded-full object-cover shadow-gold md:h-40 md:w-40"
+        />
         <span className="mb-8 inline-block rounded-full border border-gold/40 bg-gold/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.3em] text-gold">
           Guia Estratégico para Centros Auditivos
         </span>
@@ -65,11 +71,8 @@ function HeroSection() {
         </div>
 
         <div className="border-t border-gold/20 pt-8">
-          <div className="font-display text-2xl font-bold tracking-wider text-white md:text-3xl">
-            VETTORE <span className="text-gold">HUB</span>
-          </div>
-          <div className="mt-2 text-sm tracking-wider text-[#c8c8c8]">
-            Conectando Pessoas · Estruturando Resultados
+          <div className="text-sm tracking-[0.3em] text-[#c8c8c8]">
+            CONECTANDO PESSOAS · ESTRUTURANDO RESULTADOS
           </div>
         </div>
       </div>
@@ -501,10 +504,12 @@ function CtaSection() {
 function Footer() {
   return (
     <footer className="border-t border-white/5 px-6 py-10 text-center">
-      <div className="font-display text-xl font-bold text-white">
-        VETTORE <span className="text-gold">HUB</span>
-      </div>
-      <p className="mt-2 text-xs uppercase tracking-widest text-[#c8c8c8]">
+      <img
+        src={vettoreLogo}
+        alt="Vettore Hub"
+        className="mx-auto h-20 w-20 rounded-full object-cover"
+      />
+      <p className="mt-4 text-xs uppercase tracking-widest text-[#c8c8c8]">
         Conectando Pessoas · Estruturando Resultados
       </p>
       <p className="mt-6 text-xs text-[#c8c8c8]/60">
