@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, Counter } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import vettoreLogo from "@/assets/vettore-logo.jpeg";
 
 export const Route = createFileRoute("/")({
   component: Index,
