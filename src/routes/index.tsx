@@ -71,11 +71,8 @@ function HeroSection() {
         </div>
 
         <div className="border-t border-gold/20 pt-8">
-          <div className="font-display text-2xl font-bold tracking-wider text-white md:text-3xl">
-            VETTORE <span className="text-gold">HUB</span>
-          </div>
-          <div className="mt-2 text-sm tracking-wider text-[#c8c8c8]">
-            Conectando Pessoas · Estruturando Resultados
+          <div className="text-sm tracking-[0.3em] text-[#c8c8c8]">
+            CONECTANDO PESSOAS · ESTRUTURANDO RESULTADOS
           </div>
         </div>
       </div>
