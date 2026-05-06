@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link } from "react-router";
 
 function NotFoundComponent() {
   return (
@@ -22,72 +20,8 @@ function NotFoundComponent() {
   );
 }
 
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Conexão que Cresce — Vettore Hub" },
-      {
-        name: "description",
-        content:
-          "Guia estratégico para centros auditivos: construa relacionamentos com médicos e fonoaudiólogos para expandir seu mercado.",
-      },
-      { name: "author", content: "Vettore Hub" },
-      { property: "og:title", content: "Conexão que Cresce — Vettore Hub" },
-      {
-        property: "og:description",
-        content:
-          "Guia estratégico para centros auditivos: construa relacionamentos com médicos e fonoaudiólogos para expandir seu mercado.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Conexão que Cresce — Vettore Hub" },
-      {
-        name: "twitter:description",
-        content:
-          "Guia estratégico para centros auditivos: construa relacionamentos com médicos e fonoaudiólogos para expandir seu mercado.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8ac03134-498e-4628-af89-ce5fe8612371/id-preview-726042d2--e384edc5-7145-481e-a650-3ff195b6cc0b.lovable.app-1777423460292.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8ac03134-498e-4628-af89-ce5fe8612371/id-preview-726042d2--e384edc5-7145-481e-a650-3ff195b6cc0b.lovable.app-1777423460292.png",
-      },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-});
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-function RootComponent() {
+export function RootLayout() {
   return <Outlet />;
 }
+
+export { NotFoundComponent };

@@ -1,13 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, Counter } from "@/components/Reveal";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import vettoreLogo from "@/assets/vettore-logo.jpeg";
+import { Link } from "react-router";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-function Index() {
+export function Index() {
   return (
     <main className="min-h-screen bg-navy-deep text-foreground overflow-x-hidden">
       <HeroSection />
