@@ -614,11 +614,36 @@ function ChecklistSection() {
   );
 }
 
+export const getWhatsAppUrl = (phone: string, message: string) => {
+  const encodedMsg = encodeURIComponent(message);
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+
+  return isMobile 
+    ? `https://wa.me/${phone}?text=${encodedMsg}`
+    : `https://web.whatsapp.com/send?phone=${phone}&text=${encodedMsg}`;
+};
+
 /* ---------- CTA ---------- */
-function CtaSection() {
+export function CtaSection() {
+  const CONTACT_DATA = {
+    phone: "5551993998093",
+    email: "cristiane@vettorehub.com.br",
+    instagram: "vettorehub",
+    message: "Olá! Gostaria de conversar sobre estratégias para meu centro auditivo."
+  };
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const url = getWhatsAppUrl(CONTACT_DATA.phone, CONTACT_DATA.message);
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section className="relative overflow-hidden bg-navy-deep px-6 py-24 md:py-36">
       <div className="absolute inset-0 gradient-radial-gold opacity-40" />
+      
       <div className="relative mx-auto max-w-3xl text-center">
         <Reveal>
           <h2 className="text-4xl font-bold leading-tight text-white md:text-6xl">
@@ -633,48 +658,58 @@ function CtaSection() {
 
         <Reveal delay={200}>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="https://wa.me/5551993998093"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 rounded-full bg-[var(--whatsapp)] px-8 py-4 font-semibold text-white shadow-elegant transition-transform hover:scale-105"
+            {/* Botão WhatsApp com Lógica de Versão */}
+            <button
+              onClick={handleWhatsAppClick}
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#25D366] px-8 py-4 font-semibold text-white shadow-elegant transition-transform hover:scale-105"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
-              </svg>
+              <WhatsAppIcon />
               Falar no WhatsApp
-            </a>
+            </button>
+
+            {/* Botão Email */}
             <a
-              href="mailto:cristiane@vettorehub.com.br"
+              href={`mailto:${CONTACT_DATA.email}`}
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 font-semibold text-navy-deep shadow-gold transition-transform hover:scale-105"
             >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+              <EmailIcon />
               Enviar Email
             </a>
           </div>
+
+          {/* Link Instagram */}
           <a
-            href="https://instagram.com/vettorehub"
+            href={`https://instagram.com/${CONTACT_DATA.instagram}`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 text-gold hover:underline"
           >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-            </svg>
-            @vettorehub
+            <InstagramIcon />
+            @{CONTACT_DATA.instagram}
           </a>
         </Reveal>
       </div>
     </section>
   );
 }
+// Sub-componentes de ícones para limpar o JSX principal
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+    <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+  </svg>
+);
+
+const EmailIcon = () => (
+  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+  </svg>
+);
 
 function Footer() {
   return (
