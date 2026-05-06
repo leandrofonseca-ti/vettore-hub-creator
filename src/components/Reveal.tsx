@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+export function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -14,7 +22,7 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -27,7 +35,15 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
   );
 }
 
-export function Counter({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) {
+export function Counter({
+  end,
+  duration = 2000,
+  suffix = "",
+}: {
+  end: number;
+  duration?: number;
+  suffix?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(0);
   const started = useRef(false);
@@ -35,21 +51,29 @@ export function Counter({ end, duration = 2000, suffix = "" }: { end: number; du
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const start = performance.now();
-        const tick = (now: number) => {
-          const p = Math.min((now - start) / duration, 1);
-          setValue(Math.floor(p * end));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }
-    }, { threshold: 0.5 });
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const p = Math.min((now - start) / duration, 1);
+            setValue(Math.floor(p * end));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.5 },
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, [end, duration]);
 
-  return <span ref={ref}>{value}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {value}
+      {suffix}
+    </span>
+  );
 }
